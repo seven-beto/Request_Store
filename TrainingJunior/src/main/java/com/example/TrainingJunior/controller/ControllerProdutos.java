@@ -4,6 +4,7 @@ package com.example.TrainingJunior.controller;
 import com.example.TrainingJunior.dtos.AtualizarProdutosDto;
 import com.example.TrainingJunior.dtos.CadastroProdutosDto;
 import com.example.TrainingJunior.entity.Produtos;
+import com.example.TrainingJunior.exception.ProdutosException;
 import com.example.TrainingJunior.repository.RepositoryProdutos;
 import com.example.TrainingJunior.services.EmailService;
 import com.example.TrainingJunior.services.ServiceProdutos;
@@ -26,8 +27,6 @@ public class ControllerProdutos {
     @Autowired
     private ServiceProdutos service;
 
-    @Autowired
-    private EmailService emailService;
 
     @GetMapping
     public ResponseEntity allList(){
@@ -35,14 +34,13 @@ public class ControllerProdutos {
        return new ResponseEntity<>(allList, HttpStatus.OK);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity findId(@PathVariable Long id){
-        var findForId = repository.findById(id);
-        if(findForId.isPresent()){
-            return new ResponseEntity<>(findForId, HttpStatus.OK);
-        }else{
-            String produtoNaoEncontrado = "Produto de id: " + id + " nao encontrado";
-            return new ResponseEntity<>(produtoNaoEncontrado, HttpStatus.BAD_REQUEST);
+        try{
+            var find = service.findIdProdutos(id);
+           return ResponseEntity.ok().body(repository.findById(id));
+        }catch (ProdutosException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
