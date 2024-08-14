@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cliente")
 public class ControllerCliente {
@@ -27,6 +29,11 @@ public class ControllerCliente {
     public ResponseEntity allList(){
         var allList = repository.findAll();
         return new ResponseEntity<>(allList, HttpStatus.OK);
+    }
+
+    @GetMapping("/nome")
+    public List<Cliente> obter(){
+       return service.obterNome();
     }
 
     @PostMapping

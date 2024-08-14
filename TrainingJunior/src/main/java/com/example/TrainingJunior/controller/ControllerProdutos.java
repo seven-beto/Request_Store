@@ -51,7 +51,7 @@ public class ControllerProdutos {
     }
 
     @GetMapping("/tipo")
-    public CadastroProdutosDto obterTipo(){
+    public List<Produtos> obterTipo(){
         return service.obterTipo();
     }
 

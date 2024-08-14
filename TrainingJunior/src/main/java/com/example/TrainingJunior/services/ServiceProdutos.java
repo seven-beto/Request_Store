@@ -29,9 +29,8 @@ public class ServiceProdutos {
         return ;
     }
 
-    public CadastroProdutosDto obterTipo(){
-        Produtos produtos = repositoryProdutos.obterTipo();
-        return new CadastroProdutosDto(produtos.getNome(), produtos.getTipo());
+    public List<Produtos> obterTipo(){
+       return repositoryProdutos.obterTipo();
     }
 
     public Produtos findIdProdutos(@PathVariable Long id){

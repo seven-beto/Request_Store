@@ -6,10 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+
 public interface RepositoryProdutos extends JpaRepository<Produtos, Long> {
 
     public List<Produtos> findByNome(String nome);
 
-    @Query("SELECT p FROM Produtos p WHERE tipo = 'SUPLEMENTO'")
-    Produtos obterTipo();
+    @Query(value = "SELECT * FROM produtos WHERE tipo = 'SUPLEMENTO'", nativeQuery = true)
+    List<Produtos> obterTipo();
 }
