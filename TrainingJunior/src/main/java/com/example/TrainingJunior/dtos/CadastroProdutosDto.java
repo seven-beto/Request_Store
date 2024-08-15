@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 
 public record CadastroProdutosDto(
 
+        Long id,
+
         @NotBlank(message = "Nome do Produto obrigatorio")
         String nome,
 

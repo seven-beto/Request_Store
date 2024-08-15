@@ -23,6 +23,9 @@ public class Produtos {
 
     private String tipo;
 
+    @OneToOne(mappedBy = "produtosId")
+    private Solicitar solicitar;
+
     public Long getId() {
         return id;
     }

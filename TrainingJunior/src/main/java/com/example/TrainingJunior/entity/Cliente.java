@@ -6,6 +6,9 @@ import com.example.TrainingJunior.dtos.CadastroClienteDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Table(name = "cliente")
 @Entity(name = "Cliente")
 @AllArgsConstructor
