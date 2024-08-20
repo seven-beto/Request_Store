@@ -36,12 +36,8 @@ public class ControllerProdutos {
 
     @GetMapping("/{id}")
     public ResponseEntity findId(@PathVariable Long id){
-        try{
-            var find = service.findIdProdutos(id);
-           return ResponseEntity.ok().body(repository.findById(id));
-        }catch (ProdutosException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+        var find = service.findIdProdutos(id);
+        return ResponseEntity.ok().body(repository.findById(id));
     }
 
     @GetMapping("/find")

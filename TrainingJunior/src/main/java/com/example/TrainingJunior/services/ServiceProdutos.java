@@ -33,8 +33,8 @@ public class ServiceProdutos {
     public Produtos findIdProdutos(@PathVariable Long id){
         var find = repositoryProdutos.findById(id);
         if(find.isEmpty()){
-            throw new ProdutosException("Produto de id: " + id + " foi encontrado");
+            throw new ProdutosException();
         }
-        return null;
+            return null;
     }
 }
