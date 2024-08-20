@@ -1,13 +1,10 @@
 package com.example.TrainingJunior.services;
 
 import com.example.TrainingJunior.dtos.AtualizarProdutosDto;
-import com.example.TrainingJunior.dtos.CadastroProdutosDto;
 import com.example.TrainingJunior.entity.Produtos;
 import com.example.TrainingJunior.exception.ProdutosException;
 import com.example.TrainingJunior.repository.RepositoryProdutos;
-import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
