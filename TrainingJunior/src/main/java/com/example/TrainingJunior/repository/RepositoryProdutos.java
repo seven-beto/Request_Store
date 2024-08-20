@@ -1,5 +1,6 @@
 package com.example.TrainingJunior.repository;
 
+import com.example.TrainingJunior.dtos.CadastroProdutosDto;
 import com.example.TrainingJunior.entity.Produtos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,4 +14,6 @@ public interface RepositoryProdutos extends JpaRepository<Produtos, Long> {
 
     @Query(value = "SELECT * FROM produtos WHERE tipo = 'SUPLEMENTO'", nativeQuery = true)
     List<Produtos> obterTipo();
+
+    long count();
 }

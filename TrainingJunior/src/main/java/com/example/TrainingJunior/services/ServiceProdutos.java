@@ -1,7 +1,9 @@
 package com.example.TrainingJunior.services;
 
 import com.example.TrainingJunior.dtos.AtualizarProdutosDto;
+import com.example.TrainingJunior.dtos.CadastroProdutosDto;
 import com.example.TrainingJunior.entity.Produtos;
+import com.example.TrainingJunior.exception.MaxProdutosExceptions;
 import com.example.TrainingJunior.exception.ProdutosException;
 import com.example.TrainingJunior.repository.RepositoryProdutos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +38,16 @@ public class ServiceProdutos {
             throw new ProdutosException();
         }
             return null;
+    }
+
+    public Produtos maxProdutos(CadastroProdutosDto dados) throws MaxProdutosExceptions {
+        if(repositoryProdutos.count() >= 10){
+            throw new MaxProdutosExceptions();
+        }
+        Produtos produtos = new Produtos(dados);
+        produtos.setNome(dados.nome());
+        produtos.setTipo(dados.tipo());
+
+        return repositoryProdutos.save(produtos);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.TrainingJunior.infra;
 
 
+import com.example.TrainingJunior.exception.MaxProdutosExceptions;
 import com.example.TrainingJunior.exception.ProdutosException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,4 +16,10 @@ public class ExceptionHandlerProdutos extends ResponseEntityExceptionHandler {
     public ResponseEntity<String> produtosException(ProdutosException Exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuario nao encontrado");
     }
+
+    @ExceptionHandler(MaxProdutosExceptions.class)
+    public ResponseEntity<String> maxProdutosCadastrados(MaxProdutosExceptions exceptions){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Limite de produtos cadastrados excedido");
+    }
+    
 }

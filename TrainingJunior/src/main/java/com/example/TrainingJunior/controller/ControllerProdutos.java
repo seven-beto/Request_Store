@@ -54,8 +54,8 @@ public class ControllerProdutos {
     @PostMapping
     @Transactional
     public ResponseEntity cadastro(@RequestBody @Valid CadastroProdutosDto dados){
-        var cadastro = repository.save(new Produtos(dados));
-        return new ResponseEntity<>(cadastro, HttpStatus.CREATED);
+        var produtos = service.maxProdutos(dados);
+        return new ResponseEntity<>(produtos, HttpStatus.CREATED);
     }
 
     @PutMapping
